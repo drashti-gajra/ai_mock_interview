@@ -1,0 +1,360 @@
+{
+  "metadata": {
+    "candidate": "Manager, Analytics at FirstKey Homes",
+    "domain": "technology",
+    "total_experience_years": 6.0,
+    "total_questions": 15,
+    "generated_at": "2026-03-22T01:00:39.131454",
+    "generation_time_seconds": 218.2,
+    "model": "mistral"
+  },
+  "questions": [
+    {
+      "id": 1,
+      "category": "technical",
+      "question": "Can you explain your approach to building advanced SQL queries for data analysis in your current role at FirstKey Homes? (difficulty: medium, context: SQL, Follow-up: Can you describe a specific instance where optimizing an SQL query improved performance?)",
+      "evaluation": {
+        "good": [
+          "SQL",
+          "query",
+          "analysis",
+          "data",
+          "FirstKey Homes"
+        ],
+        "better": [
+          "advanced SQL",
+          "optimization",
+          "performance",
+          "execution plan",
+          "indexing"
+        ],
+        "best": [
+          "SQL performance tuning",
+          "cost-based optimization",
+          "explanation of execution plan",
+          "before and after performance comparison"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "category": "technical",
+      "question": "Describe your experience with using DAX functions in Power BI for complex data analysis. Can you provide an example of a trade-off you made when implementing these functions? (difficulty: hard, context: DAX)",
+      "evaluation": {
+        "good": [
+          "DAX",
+          "Power BI",
+          "data analysis",
+          "complex"
+        ],
+        "better": [
+          "DAX functions",
+          "Calculated Columns",
+          "measures",
+          "trade-offs"
+        ],
+        "best": [
+          "DAX formulas",
+          "modeling techniques",
+          "performance impact",
+          "measure group design"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "category": "technical",
+      "question": "Describe your experience with building data pipelines using Azure Factory and Data Lake. Can you provide an example of a situation where you had to handle data integration issues? (difficulty: medium, context: Azure Data Integration)",
+      "evaluation": {
+        "good": [
+          "Azure Data Integration",
+          "data pipelines",
+          "Data Lake",
+          "Data Factory"
+        ],
+        "better": [
+          "ETL processes",
+          "data mapping",
+          "data transformation",
+          "error handling"
+        ],
+        "best": [
+          "data integration patterns",
+          "pipeline orchestration",
+          "data quality metrics",
+          "performance improvement"
+        ]
+      }
+    },
+    {
+      "id": 4,
+      "category": "technical",
+      "question": "Can you explain your approach to debugging Python scripts in PyCharm? Can you provide an example of a challenging bug you encountered and how you identified and resolved it? (difficulty: medium, context: Python, Follow-up: How would you recommend others to handle similar issues?)",
+      "evaluation": {
+        "good": [
+          "Python",
+          "debugging",
+          "PyCharm",
+          "error handling"
+        ],
+        "better": [
+          "debugging techniques",
+          "PDB",
+          "stack trace analysis",
+          "code profiling"
+        ],
+        "best": [
+          "advanced debugging strategies",
+          "unit testing",
+          "code review"
+        ]
+      }
+    },
+    {
+      "id": 5,
+      "category": "technical",
+      "question": "Can you discuss your experience with using GitHub for managing code repositories and collaborating with a team? Can you provide an example of a best practice that you've implemented to ensure effective collaboration among team members? (difficulty: easy, context: GitHub)",
+      "evaluation": {
+        "good": [
+          "Git",
+          "collaboration",
+          "source control",
+          "GitHub"
+        ],
+        "better": [
+          "branching strategies",
+          "pull requests",
+          "code reviews",
+          "issue tracking"
+        ],
+        "best": [
+          "gitflow",
+          "feature branches",
+          "continuous integration"
+        ]
+      }
+    },
+    {
+      "id": 6,
+      "category": "behavioral",
+      "question": "During your time as Manager, Analytics at FirstKey Homes, you mentioned mentoring team members to enhance their technical reporting capabilities. Can you describe a specific instance where you provided guidance that significantly improved a team member's work? (difficulty: medium, context: Mentorship)",
+      "evaluation": {
+        "good": [
+          "mentor",
+          "guidance",
+          "team member",
+          "technical skills"
+        ],
+        "better": [
+          "identifying skill gaps",
+          "training plan",
+          "coaching sessions",
+          "progress tracking"
+        ],
+        "best": [
+          "goal setting",
+          "performance improvement",
+          "measurable results"
+        ]
+      }
+    },
+    {
+      "id": 7,
+      "category": "behavioral",
+      "question": "In your Senior Analyst role at FirstKey Homes, you collaborated with cross-departmental teams to build Ad-Hoc Excel reports and Power BI dashboards. Can you describe a situation where collaboration was challenging and how you overcame it? (difficulty: medium, context: Cross-functional Collaboration)",
+      "evaluation": {
+        "good": [
+          "collaboration",
+          "cross-departmental teams",
+          "Power BI",
+          "Excel"
+        ],
+        "better": [
+          "stakeholder management",
+          "communication",
+          "conflict resolution"
+        ],
+        "best": [
+          "interdisciplinary collaboration",
+          "project charters",
+          "meeting facilitation"
+        ]
+      }
+    },
+    {
+      "id": 8,
+      "category": "behavioral",
+      "question": "'You identified business trends and seasonal patterns to optimize model parameters and guide strategic decision making through actionable insights' - From your experience at FirstKey Homes. Can you describe a specific instance where this approach led to significant improvements? (difficulty: medium, context: Business Impact)",
+      "evaluation": {
+        "good": [
+          "business trends",
+          "seasonal patterns",
+          "model optimization",
+          "strategic decision making"
+        ],
+        "better": [
+          "data-driven insights",
+          "quantifiable impact"
+        ],
+        "best": [
+          "statistical analysis",
+          "forecasting model",
+          "strategy improvement",
+          "measurable ROI"
+        ]
+      }
+    },
+    {
+      "id": 9,
+      "category": "behavioral",
+      "question": "'You established a comprehensive data framework for revenue management, laying the groundwork for advanced analytics and reporting.' From your experience at FirstKey Homes. Can you describe how this framework improved the efficiency of reporting? (difficulty: medium, context: Data Framework)",
+      "evaluation": {
+        "good": [
+          "data framework",
+          "Revenue Management",
+          "advanced analytics"
+        ],
+        "better": [
+          "data governance",
+          "data pipeline optimization",
+          "reporting efficiency"
+        ],
+        "best": [
+          "information architecture",
+          "metadata management",
+          "performance improvement"
+        ]
+      }
+    },
+    {
+      "id": 10,
+      "category": "situational",
+      "question": "Imagine you are tasked with integrating data from a new source system into an existing Azure Data Warehouse pipeline. What steps would you take to ensure minimal impact on the overall performance of the data pipeline? (difficulty: medium, context: Data Integration)",
+      "evaluation": {
+        "good": [
+          "data integration",
+          "Azure Data Warehouse",
+          "performance optimization"
+        ],
+        "better": [
+          "data mapping",
+          "ETL processes",
+          "impact assessment"
+        ],
+        "best": [
+          "staging area design",
+          "performance testing",
+          "error handling strategies"
+        ]
+      }
+    },
+    {
+      "id": 11,
+      "category": "situational",
+      "question": "Imagine you are working on a Python script in PyCharm and encounter an unexpected bug. What steps would you take to isolate the issue and devise a solution? (difficulty: medium, context: Debugging)",
+      "evaluation": {
+        "good": [
+          "Python",
+          "debugging",
+          "bug isolation"
+        ],
+        "better": [
+          "code analysis",
+          "stack trace",
+          "error handling strategies"
+        ],
+        "best": [
+          "unit testing",
+          "code review",
+          "performance optimization"
+        ]
+      }
+    },
+    {
+      "id": 12,
+      "category": "situational",
+      "question": "'You managed weekly pricing rent growth and acquisition meetings to analyze rent growth by market.' Can you describe a situation where your data analysis led to a significant change in strategy or tactics? (difficulty: medium, context: Data-Driven Strategy)",
+      "evaluation": {
+        "good": [
+          "data-driven strategy",
+          "rent growth",
+          "market analysis"
+        ],
+        "better": [
+          "strategy improvement",
+          "tactical changes"
+        ],
+        "best": [
+          "statistical analysis",
+          "forecasting model",
+          "long-term impact"
+        ]
+      }
+    },
+    {
+      "id": 13,
+      "category": "role_specific",
+      "question": "As a Manager, can you describe your approach to managing and developing a team in the analytics domain? What techniques do you find most effective for fostering a collaborative environment? (difficulty: medium, context: Team Management)",
+      "evaluation": {
+        "good": [
+          "team management",
+          "analytics",
+          "collaborative environment"
+        ],
+        "better": [
+          "mentorship",
+          "skills development",
+          "performance improvement"
+        ],
+        "best": [
+          "goal setting",
+          "progress tracking",
+          "feedback mechanisms"
+        ]
+      }
+    },
+    {
+      "id": 14,
+      "category": "role_specific",
+      "question": "'You identified and rectified critical data discrepancies and gaps to ensure the integrity and reliability of reporting.' As a data professional in a managerial role, how do you prioritize and address data quality issues? (difficulty: medium, context: Data Quality)",
+      "evaluation": {
+        "good": [
+          "data quality",
+          "critical data discrepancies",
+          "reporting integrity"
+        ],
+        "better": [
+          "discrepancy resolution",
+          "root cause analysis",
+          "data governance"
+        ],
+        "best": [
+          "data governance framework",
+          "quality assurance processes",
+          "continuous improvement"
+        ]
+      }
+    },
+    {
+      "id": 15,
+      "category": "role_specific",
+      "question": "'You conducted a thorough analysis of Core database systems.' As a manager in the analytics domain, how do you ensure that your team's work is compliant with data privacy regulations? (difficulty: medium, context: Data Privacy)",
+      "evaluation": {
+        "good": [
+          "data privacy",
+          "compliance",
+          "regulations"
+        ],
+        "better": [
+          "privacy-focused culture",
+          "data governance policies"
+        ],
+        "best": [
+          "privacy impact assessments",
+          "data protection officer",
+          "incident response plan"
+        ]
+      }
+    }
+  ]
+}

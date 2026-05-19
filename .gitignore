@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Large model files (too large for GitHub - 100MB limit)
+*.pt
+*.bin
+model/
+mistral/
+desc/
+
+# Large data files
+JaiMataji.json
+tokenizer.json
+spm.model
+
+# Personal resume files (private data)
+*.pdf
+*_extracted.txt
+*_extracted_resume_data.json
+
+# OS files
+.DS_Store
+Thumbs.db

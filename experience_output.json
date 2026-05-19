@@ -1,0 +1,41 @@
+{
+  "experience": [
+    {
+      "position": "Manager, Analytics",
+      "company": "FirstKey Homes,",
+      "date": "Mar 2024 – Present",
+      "start_date": "March 2024",
+      "end_date": "Present",
+      "duration_years": 2.1,
+      "duration_months": 25,
+      "duration_display": "2 years 1 month",
+      "is_ongoing": true,
+      "description": "• Developed and maintained executive-level dashboards and KPI reports for monthly and quarterly C-suite reporting, partnering with the parent company to ensure alignment across business units. • Led cross-functional data initiatives by gathering requirements, analyzing data, and delivering ad-hoc reporting solutions; mentored team members to enhance their technical reporting capabilities. • Identified business trends and seasonal patterns to optimize model parameters and guide strategic decisionmaking through actionable insights. • Built advanced SQL queries and Python scripts to support IT processes, and established Microsoft Azure cloud infrastructure to automate data workflows and reporting pipelines. FirstKey Homes, Georgia, USA | Sep 2021 – Mar 2024",
+      "current_location": null
+    },
+    {
+      "position": "Senior Analyst",
+      "company": "FirstKey Homes,",
+      "date": "Sep 2021 – Mar 2024",
+      "start_date": "September 2021",
+      "end_date": "March 2024",
+      "duration_years": 2.6,
+      "duration_months": 31,
+      "duration_display": "2 years 7 months",
+      "is_ongoing": false,
+      "description": "• Developed and maintained Revenue Management Pricing Performance Power BI dashboard by writing complex SQL queries and advanced DAX functions to analyze essential KPIs used for day-to-day pricing reporting. • Managed weekly pricing rent growth and acquisition meetings to analyze rent growth by market and recommend pricing model parameters based on demand score. • Engineered custom pipelines and optimized existing pipelines leveraging Microsoft Azure Factory and Data Lake to create custom reports in SandBox. • Collaborated with cross-departmental teams, such as Acquisitions, Vendor Management, Procurement, Maintenance, and Leasing, to build Ad-Hoc Excel reports and Power BI dashboards by writing custom queries from core systems like BLTYardi, BLTYardiPre-Yeti, Hub, Homes, FKHEDW, Dynamics. • Established a comprehensive data framework for revenue management, laying the groundwork for advanced analytics and reporting. • Conducted a thorough analysis of Core database systems, identifying and rectifying critical data discrepancies and gaps to ensure the integrity and reliability of reporting. • Orchestrated comprehensive training sessions, presentations, and mentorship programs for interns, crossdepartments, and field agents on SQL queries, Power BI dashboard development, and utilization."
+    },
+    {
+      "position": "Data Analyst",
+      "company": "Pidilite Ind. Ltd,",
+      "date": "Dec 2017– March 2019",
+      "start_date": "December 2017",
+      "end_date": "March 2019",
+      "duration_years": 1.3,
+      "duration_months": 16,
+      "duration_display": "1 year 4 months",
+      "is_ongoing": false,
+      "description": "• Implemented an EDW Model on Azure SQL Data Warehouse over the Enterprise Data Warehouse hosted in onpremises Oracle database to consolidate the data across all applications and databases. • Identified and documented project constraints, assumptions, business impacts, risks, and scope exclusions and transformed project data requirements into project data models. • Worked with the ETL team for Data Cleaning and Data Integration from different source systems. • Collaborated with the Sales and Marketing team to build KPIs dashboards to review business performance. • Synthesized current business intelligence data to produce reports and polished presentations, highlighting findings and recommending changes using Power BI. • Used advanced Excel functions to generate spreadsheets and created dashboards in Excel for data reporting. • Created SharePoint workflows for a centralized Content Management System (CMS). • Managed an approval network cycle to resolve employee issues using Workflow."
+    }
+  ]
+}

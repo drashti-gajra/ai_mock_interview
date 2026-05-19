@@ -1,0 +1,233 @@
+[
+  {
+    "id": 1,
+    "Position": "Manager, Analytics",
+    "Company": "FirstKey Homes,",
+    "Year": "Mar 2024 – Present",
+    "Status": "valid",
+    "distances": {
+      "position_to_date": 0,
+      "company_to_position": 7,
+      "company_to_date": 3
+    },
+    "line_positions": {
+      "position_line": 74,
+      "company_line": 74,
+      "date_line": 74,
+      "min_line": 74,
+      "max_line": 74
+    },
+    "descriptions": [
+      {
+        "line_num": 75,
+        "text": "• Developed and maintained executive-level dashboards and KPI reports for monthly and quarterly C-suite",
+        "distance": 1
+      },
+      {
+        "line_num": 76,
+        "text": "reporting, partnering with the parent company to ensure alignment across business units.",
+        "distance": 2
+      },
+      {
+        "line_num": 77,
+        "text": "• Led cross-functional data initiatives by gathering requirements, analyzing data, and delivering ad-hoc reporting",
+        "distance": 3
+      },
+      {
+        "line_num": 78,
+        "text": "solutions; mentored team members to enhance their technical reporting capabilities.",
+        "distance": 4
+      },
+      {
+        "line_num": 79,
+        "text": "• Identified business trends and seasonal patterns to optimize model parameters and guide strategic decisionmaking through actionable insights.",
+        "distance": 5
+      },
+      {
+        "line_num": 81,
+        "text": "• Built advanced SQL queries and Python scripts to support IT processes, and established Microsoft Azure",
+        "distance": 7
+      },
+      {
+        "line_num": 82,
+        "text": "cloud infrastructure to automate data workflows and reporting pipelines.",
+        "distance": 8
+      },
+      {
+        "line_num": 83,
+        "text": "FirstKey Homes, Georgia, USA | Sep 2021 – Mar",
+        "distance": 9
+      },
+      {
+        "line_num": 84,
+        "text": "2024",
+        "distance": 10
+      }
+    ],
+    "description_text": "• Developed and maintained executive-level dashboards and KPI reports for monthly and quarterly C-suite reporting, partnering with the parent company to ensure alignment across business units. • Led cross-functional data initiatives by gathering requirements, analyzing data, and delivering ad-hoc reporting solutions; mentored team members to enhance their technical reporting capabilities. • Identified business trends and seasonal patterns to optimize model parameters and guide strategic decisionmaking through actionable insights. • Built advanced SQL queries and Python scripts to support IT processes, and established Microsoft Azure cloud infrastructure to automate data workflows and reporting pipelines. FirstKey Homes, Georgia, USA | Sep 2021 – Mar 2024"
+  },
+  {
+    "id": 3,
+    "Position": "Senior Analyst",
+    "Company": "FirstKey Homes,",
+    "Year": "Sep 2021 – Mar 2024",
+    "Status": "valid",
+    "distances": {
+      "position_to_date": 1,
+      "company_to_position": 9,
+      "company_to_date": 3
+    },
+    "line_positions": {
+      "position_line": 85,
+      "company_line": 83,
+      "date_line": null,
+      "min_line": 85,
+      "max_line": 85
+    },
+    "descriptions": [
+      {
+        "line_num": 86,
+        "text": "• Developed and maintained Revenue Management Pricing Performance Power BI dashboard by writing complex",
+        "distance": 1
+      },
+      {
+        "line_num": 87,
+        "text": "SQL queries and advanced DAX functions to analyze essential KPIs used for day-to-day pricing reporting.",
+        "distance": 2
+      },
+      {
+        "line_num": 88,
+        "text": "• Managed weekly pricing rent growth and acquisition meetings to analyze rent growth by market and",
+        "distance": 3
+      },
+      {
+        "line_num": 89,
+        "text": "recommend pricing model parameters based on demand score.",
+        "distance": 4
+      },
+      {
+        "line_num": 90,
+        "text": "• Engineered custom pipelines and optimized existing pipelines leveraging Microsoft Azure Factory and Data Lake",
+        "distance": 5
+      },
+      {
+        "line_num": 91,
+        "text": "to create custom reports in SandBox.",
+        "distance": 6
+      },
+      {
+        "line_num": 92,
+        "text": "• Collaborated with cross-departmental teams, such as Acquisitions, Vendor Management, Procurement,",
+        "distance": 7
+      },
+      {
+        "line_num": 93,
+        "text": "Maintenance, and Leasing, to build Ad-Hoc Excel reports and Power BI dashboards by writing custom queries",
+        "distance": 8
+      },
+      {
+        "line_num": 94,
+        "text": "from core systems like BLTYardi, BLTYardiPre-Yeti, Hub, Homes, FKHEDW, Dynamics.",
+        "distance": 9
+      },
+      {
+        "line_num": 95,
+        "text": "• Established a comprehensive data framework for revenue management, laying the groundwork for advanced",
+        "distance": 10
+      },
+      {
+        "line_num": 96,
+        "text": "analytics and reporting.",
+        "distance": 11
+      },
+      {
+        "line_num": 97,
+        "text": "• Conducted a thorough analysis of Core database systems, identifying and rectifying critical data discrepancies",
+        "distance": 12
+      },
+      {
+        "line_num": 98,
+        "text": "and gaps to ensure the integrity and reliability of reporting.",
+        "distance": 13
+      },
+      {
+        "line_num": 99,
+        "text": "• Orchestrated comprehensive training sessions, presentations, and mentorship programs for interns, crossdepartments, and field agents on SQL queries, Power BI dashboard development, and utilization.",
+        "distance": 14
+      }
+    ],
+    "description_text": "• Developed and maintained Revenue Management Pricing Performance Power BI dashboard by writing complex SQL queries and advanced DAX functions to analyze essential KPIs used for day-to-day pricing reporting. • Managed weekly pricing rent growth and acquisition meetings to analyze rent growth by market and recommend pricing model parameters based on demand score. • Engineered custom pipelines and optimized existing pipelines leveraging Microsoft Azure Factory and Data Lake to create custom reports in SandBox. • Collaborated with cross-departmental teams, such as Acquisitions, Vendor Management, Procurement, Maintenance, and Leasing, to build Ad-Hoc Excel reports and Power BI dashboards by writing custom queries from core systems like BLTYardi, BLTYardiPre-Yeti, Hub, Homes, FKHEDW, Dynamics. • Established a comprehensive data framework for revenue management, laying the groundwork for advanced analytics and reporting. • Conducted a thorough analysis of Core database systems, identifying and rectifying critical data discrepancies and gaps to ensure the integrity and reliability of reporting. • Orchestrated comprehensive training sessions, presentations, and mentorship programs for interns, crossdepartments, and field agents on SQL queries, Power BI dashboard development, and utilization."
+  },
+  {
+    "id": 2,
+    "Position": "Data Analyst",
+    "Company": "Pidilite Ind. Ltd,",
+    "Year": "Dec 2017– March 2019",
+    "Status": "valid",
+    "distances": {
+      "position_to_date": 1,
+      "company_to_position": 8,
+      "company_to_date": 3
+    },
+    "line_positions": {
+      "position_line": 101,
+      "company_line": 101,
+      "date_line": 101,
+      "min_line": 101,
+      "max_line": 101
+    },
+    "descriptions": [
+      {
+        "line_num": 102,
+        "text": "• Implemented an EDW Model on Azure SQL Data Warehouse over the Enterprise Data Warehouse hosted in onpremises Oracle database to consolidate the data across all applications and databases.",
+        "distance": 1
+      },
+      {
+        "line_num": 104,
+        "text": "• Identified and documented project constraints, assumptions, business impacts, risks, and scope exclusions and",
+        "distance": 3
+      },
+      {
+        "line_num": 105,
+        "text": "transformed project data requirements into project data models.",
+        "distance": 4
+      },
+      {
+        "line_num": 106,
+        "text": "• Worked with the ETL team for Data Cleaning and Data Integration from different source systems.",
+        "distance": 5
+      },
+      {
+        "line_num": 107,
+        "text": "• Collaborated with the Sales and Marketing team to build KPIs dashboards to review business performance.",
+        "distance": 6
+      },
+      {
+        "line_num": 108,
+        "text": "• Synthesized current business intelligence data to produce reports and polished presentations, highlighting",
+        "distance": 7
+      },
+      {
+        "line_num": 109,
+        "text": "findings and recommending changes using Power BI.",
+        "distance": 8
+      },
+      {
+        "line_num": 110,
+        "text": "• Used advanced Excel functions to generate spreadsheets and created dashboards in Excel for data reporting.",
+        "distance": 9
+      },
+      {
+        "line_num": 111,
+        "text": "• Created SharePoint workflows for a centralized Content Management System (CMS).",
+        "distance": 10
+      },
+      {
+        "line_num": 112,
+        "text": "• Managed an approval network cycle to resolve employee issues using Workflow.",
+        "distance": 11
+      }
+    ],
+    "description_text": "• Implemented an EDW Model on Azure SQL Data Warehouse over the Enterprise Data Warehouse hosted in onpremises Oracle database to consolidate the data across all applications and databases. • Identified and documented project constraints, assumptions, business impacts, risks, and scope exclusions and transformed project data requirements into project data models. • Worked with the ETL team for Data Cleaning and Data Integration from different source systems. • Collaborated with the Sales and Marketing team to build KPIs dashboards to review business performance. • Synthesized current business intelligence data to produce reports and polished presentations, highlighting findings and recommending changes using Power BI. • Used advanced Excel functions to generate spreadsheets and created dashboards in Excel for data reporting. • Created SharePoint workflows for a centralized Content Management System (CMS). • Managed an approval network cycle to resolve employee issues using Workflow."
+  }
+]

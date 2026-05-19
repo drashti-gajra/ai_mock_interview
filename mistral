@@ -1,0 +1,391 @@
+"""
+AI Mock Interview — Resume Question Generation Pipeline
+========================================================
+Step 1 : Rule-based section slicer  → splits tagged .txt into sections  (no AI)
+Step 2 : Mistral via Ollama         → extracts Skills / Experience / Projects as JSON
+Step 3 : Mistral via Ollama         → generates interview questions from that JSON
+
+Requirements:
+    1. Install Ollama        → https://ollama.com/download
+    2. Pull Mistral model    → run:  ollama pull mistral
+    3. Install Python lib    → run:  pip install ollama
+
+Usage:
+    python interview_pipeline.py chintan_extracted.txt
+"""
+
+import os
+import sys
+import re
+import json
+
+import ollama
+
+
+# ══════════════════════════════════════════════════════════════════
+# CONFIGURATION
+# ══════════════════════════════════════════════════════════════════
+
+OLLAMA_MODEL         = "mistral"   # change to "mistral:7b" or "llama3" etc if needed
+QUESTIONS_PER_SKILL  = 2           # questions generated per skill
+QUESTIONS_PER_ROLE   = 3           # questions generated per job role
+QUESTIONS_PER_PROJECT= 3           # questions generated per project
+
+
+# ══════════════════════════════════════════════════════════════════
+# HELPER — call Ollama / Mistral
+# ══════════════════════════════════════════════════════════════════
+
+def call_mistral(prompt: str) -> str:
+    """
+    Send a prompt to locally running Mistral via Ollama.
+    Returns the raw text response.
+    """
+    response = ollama.chat(
+        model    = OLLAMA_MODEL,
+        messages = [{"role": "user", "content": prompt}]
+    )
+    return response["message"]["content"].strip()
+
+
+def parse_json_response(raw: str) -> dict | list:
+    """
+    Strip markdown code fences (```json ... ```) and parse JSON.
+    Raises json.JSONDecodeError if parsing fails.
+    """
+    # Remove ```json or ``` fences Mistral sometimes adds
+    clean = re.sub(r"^```(?:json)?\s*", "", raw.strip(), flags=re.MULTILINE)
+    clean = re.sub(r"\s*```$",          "", clean.strip(), flags=re.MULTILINE)
+    return json.loads(clean.strip())
+
+
+# ══════════════════════════════════════════════════════════════════
+# STEP 1 — SECTION SLICER  (pure Python, no AI)
+# Splits the tagged .txt into { "Skills": "...", "Experience": "..." }
+# ══════════════════════════════════════════════════════════════════
+
+def slice_sections(tagged_text: str) -> dict[str, str]:
+    """
+    Reads lines like:
+        [ Skills ]
+        SQL, Python...
+        [ Experience ]
+        FirstKey Homes...
+    Returns:
+        { "Skills": "SQL, Python...", "Experience": "FirstKey Homes..." }
+    """
+    sections       : dict[str, str] = {}
+    current_header = "header"
+    current_lines  : list[str] = []
+
+    for line in tagged_text.splitlines():
+        match = re.match(r"^\[\s*(.+?)\s*\]$", line.strip())
+        if match:
+            # Save whatever we've collected so far
+            if current_lines:
+                sections[current_header] = "\n".join(current_lines).strip()
+            current_header = match.group(1).strip()
+            current_lines  = []
+        else:
+            current_lines.append(line)
+
+    # Save the last section
+    if current_lines:
+        sections[current_header] = "\n".join(current_lines).strip()
+
+    return sections
+
+
+def get_candidate_name(sections: dict[str, str]) -> str:
+    """Best-effort name grab from the SIDEBAR or header block."""
+    raw = sections.get("header", "") + "\n" + sections.get("SIDEBAR", "")
+    for line in raw.splitlines():
+        line = line.strip()
+        if line and "@" not in line and not re.search(r"\d{3}", line) and len(line) > 3:
+            return line
+    return "Candidate"
+
+
+# ══════════════════════════════════════════════════════════════════
+# STEP 2 — MISTRAL JSON EXTRACTOR
+# Sends the raw section text → gets back clean structured JSON
+# ══════════════════════════════════════════════════════════════════
+
+def extract_resume_json(sections: dict[str, str]) -> dict:
+    """
+    Combine Skills + Experience + Projects sections into one Mistral call.
+    Returns a validated dict with keys: skills, experience, projects.
+    """
+
+    skills_text     = sections.get("Skills", "")
+    experience_text = sections.get("Experience", "")
+    projects_text   = sections.get("Projects", "")
+
+    prompt = f"""
+You are a resume parser. Extract structured information from the resume sections below.
+
+Return ONLY a single valid JSON object — no explanation, no markdown, no extra text.
+
+Use this exact structure:
+{{
+  "skills": {{
+    "programming_languages": [],
+    "tools_and_platforms"  : [],
+    "cloud_and_devops"     : [],
+    "databases"            : [],
+    "other"                : []
+  }},
+  "experience": [
+    {{
+      "company" : "",
+      "role"    : "",
+      "duration": "",
+      "location": "",
+      "bullets" : []
+    }}
+  ],
+  "projects": [
+    {{
+      "name"       : "",
+      "tech_stack" : [],
+      "description": ""
+    }}
+  ]
+}}
+
+Rules:
+- If a section has no content, return an empty list [] or empty object {{}}
+- Combine multi-line items into single strings
+- For experience bullets, each bullet point is one item in the "bullets" array
+- For projects: if no dedicated Projects section exists, infer projects from experience bullets if possible
+
+--- SKILLS SECTION ---
+{skills_text}
+
+--- EXPERIENCE SECTION ---
+{experience_text}
+
+--- PROJECTS SECTION ---
+{projects_text if projects_text else "(none)"}
+
+Return ONLY the JSON object:
+"""
+
+    print("  [Mistral] Extracting structured JSON from resume sections ...")
+
+    for attempt in range(3):
+        try:
+            raw    = call_mistral(prompt)
+            result = parse_json_response(raw)
+
+            # Basic validation — ensure top-level keys exist
+            result.setdefault("skills",     {})
+            result.setdefault("experience", [])
+            result.setdefault("projects",   [])
+            return result
+
+        except json.JSONDecodeError as e:
+            print(f"  [WARN] JSON parse failed (attempt {attempt+1}/3): {e}")
+            if attempt == 2:
+                print("  [ERROR] Could not parse extraction response. Using empty data.")
+                return {"skills": {}, "experience": [], "projects": []}
+
+    return {"skills": {}, "experience": [], "projects": []}
+
+
+# ══════════════════════════════════════════════════════════════════
+# STEP 3 — MISTRAL QUESTION GENERATOR
+# Sends the structured JSON → gets back interview questions
+# ══════════════════════════════════════════════════════════════════
+
+def generate_questions(resume_json: dict, candidate_name: str) -> list[dict]:
+    """
+    Feed the extracted JSON into Mistral and get back a list of
+    targeted interview questions with topic, source and difficulty.
+    """
+
+    # Pretty-print JSON so Mistral can read it clearly
+    resume_str = json.dumps(resume_json, indent=2)
+
+    prompt = f"""
+You are a senior technical interviewer conducting a mock interview for {candidate_name}.
+
+Below is their structured resume data in JSON format:
+
+{resume_str}
+
+Generate interview questions based on this resume. Follow these rules strictly:
+
+1. SKILLS questions:
+   - Generate {QUESTIONS_PER_SKILL} questions for each skill listed under programming_languages, tools_and_platforms, cloud_and_devops, and databases
+   - Questions must directly test knowledge of that specific skill
+   - Mix of easy/medium/hard
+
+2. EXPERIENCE questions:
+   - Generate {QUESTIONS_PER_ROLE} questions for each job in the experience array
+   - Reference the actual bullet points and responsibilities from that role
+   - Include: one behavioural ("Tell me about a time..."), one technical deep-dive, one situational
+
+3. PROJECTS questions:
+   - Generate {QUESTIONS_PER_PROJECT} questions for each project
+   - Ask about tech choices, architecture decisions, challenges, and outcomes
+   - If no projects exist, skip this section
+
+Return ONLY a valid JSON array — no explanation, no markdown, no extra text.
+
+Use this exact structure for every question:
+[
+  {{
+    "question"  : "The interview question text",
+    "topic"     : "exact skill name OR job role OR project name",
+    "source"    : "skills OR experience OR projects",
+    "difficulty": "easy OR medium OR hard"
+  }}
+]
+
+Return ONLY the JSON array:
+"""
+
+    print("  [Mistral] Generating interview questions from extracted JSON ...")
+
+    for attempt in range(3):
+        try:
+            raw       = call_mistral(prompt)
+            questions = parse_json_response(raw)
+
+            if not isinstance(questions, list):
+                raise ValueError("Response is not a JSON array")
+
+            # Ensure every question has required keys
+            valid = []
+            for q in questions:
+                if all(k in q for k in ("question", "topic", "source", "difficulty")):
+                    valid.append(q)
+                else:
+                    # Fill in missing keys with defaults
+                    q.setdefault("topic",      "General")
+                    q.setdefault("source",     "general")
+                    q.setdefault("difficulty", "medium")
+                    valid.append(q)
+
+            return valid
+
+        except (json.JSONDecodeError, ValueError) as e:
+            print(f"  [WARN] Question parse failed (attempt {attempt+1}/3): {e}")
+            if attempt == 2:
+                print("  [ERROR] Could not parse questions response.")
+                return []
+
+    return []
+
+
+# ══════════════════════════════════════════════════════════════════
+# SAVE & DISPLAY
+# ══════════════════════════════════════════════════════════════════
+
+def save_json(data: dict, path: str):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2, ensure_ascii=False)
+    print(f"  Saved : {path}")
+
+
+def display_summary(output: dict):
+    print("\n" + "═" * 60)
+    print(f"  INTERVIEW QUESTIONS FOR: {output['candidate_name']}")
+    print(f"  Total questions        : {output['total_questions']}")
+    print("═" * 60)
+
+    # Group by source
+    by_source: dict[str, list] = {}
+    for q in output["questions"]:
+        by_source.setdefault(q["source"], []).append(q)
+
+    for source, qs in by_source.items():
+        print(f"\n  ── {source.upper()} ({len(qs)} questions) ──")
+        for i, q in enumerate(qs, 1):
+            print(f"\n  {i}. [{q['difficulty'].upper()}]  Topic: {q['topic']}")
+            print(f"     {q['question']}")
+
+    print("\n" + "═" * 60)
+
+
+# ══════════════════════════════════════════════════════════════════
+# MAIN PIPELINE
+# ══════════════════════════════════════════════════════════════════
+
+def run_pipeline(txt_path: str) -> dict:
+    print("\n" + "═" * 60)
+    print("  AI MOCK INTERVIEW — QUESTION GENERATION PIPELINE")
+    print("  Model: Mistral (via Ollama — local)")
+    print("═" * 60)
+
+    # ── Load tagged resume text ───────────────────────────────
+    with open(txt_path, "r", encoding="utf-8") as f:
+        tagged_text = f.read()
+
+    # ── Step 1: Slice sections (no AI) ───────────────────────
+    print("\n  [1/3] Slicing resume sections ...")
+    sections       = slice_sections(tagged_text)
+    candidate_name = get_candidate_name(sections)
+    print(f"        Sections found : {list(sections.keys())}")
+    print(f"        Candidate      : {candidate_name}")
+
+    # ── Step 2: Extract structured JSON via Mistral ───────────
+    print("\n  [2/3] Extracting structured data (Mistral call #1) ...")
+    resume_json = extract_resume_json(sections)
+
+    # Count extracted items
+    skill_count = sum(
+        len(v) for v in resume_json.get("skills", {}).values() if isinstance(v, list)
+    )
+    print(f"        Skills extracted    : {skill_count}")
+    print(f"        Experience entries  : {len(resume_json.get('experience', []))}")
+    print(f"        Projects found      : {len(resume_json.get('projects', []))}")
+
+    # Save the intermediate JSON so you can inspect it
+    base_path   = os.path.splitext(txt_path)[0]
+    resume_json_path = base_path + "_resume_data.json"
+    save_json(resume_json, resume_json_path)
+    print(f"        Resume JSON saved   : {resume_json_path}")
+
+    # ── Step 3: Generate questions via Mistral ────────────────
+    print("\n  [3/3] Generating interview questions (Mistral call #2) ...")
+    questions = generate_questions(resume_json, candidate_name)
+    print(f"        Questions generated : {len(questions)}")
+
+    # ── Assemble final output ─────────────────────────────────
+    output = {
+        "candidate_name"  : candidate_name,
+        "total_questions" : len(questions),
+        "questions"       : questions,
+    }
+
+    questions_path = base_path + "_questions.json"
+    save_json(output, questions_path)
+
+    return output
+
+
+# ══════════════════════════════════════════════════════════════════
+# ENTRY POINT
+# ══════════════════════════════════════════════════════════════════
+
+def main():
+    if len(sys.argv) > 1:
+        txt_path = " ".join(sys.argv[1:]).strip().strip('"').strip("'")
+    else:
+        print("Paste the path to the extracted resume .txt file and press Enter:")
+        txt_path = input("TXT path: ").strip().strip('"').strip("'")
+
+    txt_path = os.path.normpath(txt_path)
+
+    if not os.path.isfile(txt_path):
+        print(f"\n  ERROR: File not found — {txt_path}")
+        sys.exit(1)
+
+    output = run_pipeline(txt_path)
+    display_summary(output)
+
+
+if __name__ == "__main__":
+    main()
